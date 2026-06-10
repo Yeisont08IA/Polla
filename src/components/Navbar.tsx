@@ -38,6 +38,12 @@ export async function Navbar() {
           Predicciones
         </Link>
         <Link
+          href="/rules"
+          className="text-[#f0f4ff]/80 hover:text-[#22c55e] transition-colors text-sm font-medium"
+        >
+          📋 Reglas
+        </Link>
+        <Link
           href="/leaderboard"
           className="text-[#f0f4ff]/80 hover:text-[#22c55e] transition-colors text-sm font-medium"
         >
