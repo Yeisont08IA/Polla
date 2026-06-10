@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import type { Match } from '@/lib/types'
+import { getFlag } from '@/lib/types'
 
 interface Props {
   matches: Match[]
@@ -90,11 +91,11 @@ export default function AdminResultsClient({ matches }: Props) {
                   {match.group_name ? ` · Grupo ${match.group_name}` : ''} · Partido #{match.match_number}
                 </p>
                 <p className="text-lg font-semibold mt-0.5">
-                  <span className="mr-1">{match.flag_home ?? ''}</span>
+                  <span className="mr-1">{match.flag_home ?? getFlag(match.team_home)}</span>
                   {match.team_home}
                   <span className="mx-2 text-gray-400">vs</span>
                   {match.team_away}
-                  <span className="ml-1">{match.flag_away ?? ''}</span>
+                  <span className="ml-1">{match.flag_away ?? getFlag(match.team_away)}</span>
                 </p>
                 <p className="text-xs text-gray-400">{dateStr}{match.venue ? ` · ${match.venue}` : ''}</p>
               </div>

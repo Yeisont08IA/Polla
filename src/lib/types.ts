@@ -66,6 +66,59 @@ export const PHASE_LABELS: Record<Phase, string> = {
   final: 'Final',
 }
 
+export const TEAM_FLAGS: Record<string, string> = {
+  'México': '🇲🇽',
+  'Ecuador': '🇪🇨',
+  'Estados Unidos': '🇺🇸',
+  'Canadá': '🇨🇦',
+  'Argentina': '🇦🇷',
+  'Marruecos': '🇲🇦',
+  'Albania': '🇦🇱',
+  'Ucrania': '🇺🇦',
+  'España': '🇪🇸',
+  'Brasil': '🇧🇷',
+  'Japón': '🇯🇵',
+  'Sudáfrica': '🇿🇦',
+  'Francia': '🇫🇷',
+  'Colombia': '🇨🇴',
+  'Alemania': '🇩🇪',
+  'Corea del Sur': '🇰🇷',
+  'Portugal': '🇵🇹',
+  'Arabia Saudita': '🇸🇦',
+  'Senegal': '🇸🇳',
+  'Polonia': '🇵🇱',
+  'Inglaterra': '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+  'Países Bajos': '🇳🇱',
+  'Irán': '🇮🇷',
+  'Camerún': '🇨🇲',
+  'Bélgica': '🇧🇪',
+  'Venezuela': '🇻🇪',
+  'Australia': '🇦🇺',
+  'Ghana': '🇬🇭',
+  'Uruguay': '🇺🇾',
+  'Suiza': '🇨🇭',
+  'República Checa': '🇨🇿',
+  'Nigeria': '🇳🇬',
+  'Italia': '🇮🇹',
+  'Perú': '🇵🇪',
+  'Chile': '🇨🇱',
+  'Croacia': '🇭🇷',
+  'Turquía': '🇹🇷',
+  'Serbia': '🇷🇸',
+  'Dinamarca': '🇩🇰',
+  'China': '🇨🇳',
+  'Escocia': '🏴󠁧󠁢󠁳󠁣󠁴󠁿',
+  'Paraguay': '🇵🇾',
+  'Costa Rica': '🇨🇷',
+  'Nueva Zelanda': '🇳🇿',
+  'Kenia': '🇰🇪',
+  'Bolivia': '🇧🇴',
+}
+
+export function getFlag(team: string): string {
+  return TEAM_FLAGS[team] ?? '🏳️'
+}
+
 export function isMatchLocked(matchDate: string): boolean {
   return new Date(matchDate).getTime() - Date.now() <= 10 * 60 * 1000
 }

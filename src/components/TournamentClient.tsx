@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
+import { TEAM_FLAGS } from '@/lib/types'
 
 const TEAMS = [
   'México', 'Ecuador', 'Estados Unidos', 'Canadá',
@@ -109,12 +110,12 @@ export function TournamentClient({ existingPrediction, userId, isLocked }: Props
               >
                 <option value="">— Selecciona un equipo —</option>
                 {TEAMS.map(t => (
-                  <option key={t} value={t}>{t}</option>
+                  <option key={t} value={t}>{TEAM_FLAGS[t] ?? '🏳️'} {t}</option>
                 ))}
               </select>
             ) : (
               <div className="bg-[#050d1a] border border-white/10 rounded-lg px-3 py-2.5 text-white/70 text-sm">
-                {value || '—'}
+                {value ? `${TEAM_FLAGS[value] ?? '🏳️'} ${value}` : '—'}
               </div>
             )}
           </div>
