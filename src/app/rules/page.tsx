@@ -128,6 +128,7 @@ export default function RulesPage() {
             { icon: '👁️', title: 'Visibilidad de predicciones', desc: 'Las predicciones de los demás participantes solo son visibles después del cierre. Antes del cierre nadie puede ver la predicción del otro.' },
             { icon: '0️⃣', title: 'Sin predicción = 0 puntos', desc: 'Si no ingresas una predicción para un partido antes del cierre, no sumas ningún punto por ese partido.' },
             { icon: '📅', title: 'Puedes llenar a diario', desc: 'No es necesario predecir los 104 partidos de una sola vez. Puedes ir llenando día a día antes del cierre de cada partido.' },
+            { icon: '🏆', title: 'Predicción de torneo', desc: 'Tienes 5 días desde el inicio del Mundial (hasta el 16 de junio a las 11:59 PM) para elegir campeón, subcampeón y tercer puesto. Después de esa fecha no se puede modificar.' },
             { icon: '🔄', title: 'Fases eliminatorias', desc: 'Los partidos de octavos, cuartos, semis y final se habilitan cuando se conozcan los equipos clasificados.' },
             { icon: '🏅', title: 'Clasificación en tiempo real', desc: 'La tabla de posiciones se actualiza automáticamente después de cada resultado.' },
           ].map(({ icon, title, desc }) => (

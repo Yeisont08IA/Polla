@@ -32,9 +32,10 @@ interface Props {
   existingPrediction: TournamentPrediction | null
   userId: string
   isLocked: boolean
+  deadline: string
 }
 
-export function TournamentClient({ existingPrediction, userId, isLocked }: Props) {
+export function TournamentClient({ existingPrediction, userId, isLocked, deadline }: Props) {
   const [champion, setChampion] = useState(existingPrediction?.champion ?? '')
   const [runnerUp, setRunnerUp] = useState(existingPrediction?.runner_up ?? '')
   const [thirdPlace, setThirdPlace] = useState(existingPrediction?.third_place ?? '')
@@ -80,8 +81,32 @@ export function TournamentClient({ existingPrediction, userId, isLocked }: Props
       <div className="mb-8 text-center">
         <h1 className="text-3xl font-bold text-white mb-2">Predicción de Torneo</h1>
         <p className="text-white/50">¿Quién ganará el Mundial 2026?</p>
+        {!isLocked ? (
+          <div className="mt-3 inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 rounded-full px-4 py-1.5">
+            <span className="text-green-400 text-sm">
+              ⏰ Cierra el{' '}
+              <strong>
+                {new Date(deadline).toLocaleDateString('es-CO', {
+                  timeZone: 'America/Bogota',
+                  weekday: 'long', day: 'numeric', month: 'long',
+                })}
+              </strong>{' '}
+              a las{' '}
+              <strong>
+                {new Date(deadline).toLocaleTimeString('es-CO', {
+                  timeZone: 'America/Bogota',
+                  hour: '2-digit', minute: '2-digit',
+                })}
+              </strong>
+            </span>
+          </div>
+        ) : (
+          <div className="mt-3 inline-flex items-center gap-2 bg-red-500/10 border border-red-500/30 rounded-full px-4 py-1.5">
+            <span className="text-red-400 text-sm font-semibold">🔒 Predicciones cerradas</span>
+          </div>
+        )}
         {totalPoints > 0 && (
-          <div className="mt-3 inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-1.5">
+          <div className="mt-2 inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-1.5">
             <span className="text-amber-400 font-bold">{totalPoints} pts ganados</span>
           </div>
         )}
@@ -135,7 +160,10 @@ export function TournamentClient({ existingPrediction, userId, isLocked }: Props
           {saving ? 'Guardando...' : saved ? '✓ Guardado' : 'Guardar predicción'}
         </button>
       ) : (
-        <p className="text-center text-white/40 text-sm">El torneo ha finalizado. No se pueden editar las predicciones.</p>
+        <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4 text-center">
+          <p className="text-red-400 font-semibold">🔒 Predicciones cerradas</p>
+          <p className="text-white/40 text-sm mt-1">El plazo de 5 días tras el inicio del Mundial ya venció.</p>
+        </div>
       )}
 
       <div className="mt-6 bg-[#0a1628] rounded-xl p-4 border border-white/5">
